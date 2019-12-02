@@ -2,7 +2,7 @@ import java.io.*;
 import java.nio.*;
 import java.util.*;
 
-public class DiskSched {
+public class diskScheduling {
     public static void main(String[] args) throws FileNotFoundException {
         //Begin parsing user's choice for algorithm
         int userAlgorithm = Integer.parseInt(args[0]);
@@ -23,6 +23,22 @@ public class DiskSched {
                 list.add(input.nextLine());
             }
 
+            //Variables used for algorithms
+            Integer startPos = Integer.parseInt(list.get(0));
+            Integer direction = Integer.parseInt(list.get(1));
+            //Integer requests = Integer.parseInt(list.get(2));
+            //Array requests needs to be transposed from x x x x x to:
+            //x
+            //x
+            //x
+            //x
+            //x
+
+            
+            //System.out.println(startPos); 
+            //System.out.println(direction);
+            //System.out.println(requests); //Need to convert to an array
+
                 //Algorithms *These should be in a class/method*
                 if (userAlgorithm == 0){
                     System.out.println("Algorithm: FCFS");
@@ -31,7 +47,7 @@ public class DiskSched {
                     System.out.println("Algorithm: SSTF");
                 }
                 else if (userAlgorithm == 2){
-                    System.out.println("Algorithm: LOOK");   
+                    System.out.println("Algorithm: LOOK"); 
                 }
                 else if (userAlgorithm == 3){
                     System.out.println("Algorithm: C-LOOK");    
