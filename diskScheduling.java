@@ -26,18 +26,21 @@ public class diskScheduling {
             Integer startPos = Integer.parseInt(list.get(0)); //Variable for starting position
             Integer direction = Integer.parseInt(list.get(1)); //Variable for direction
             String requests = list.get(2); 
-            String[] requestArray = requests.split(" "); //Array for requests *Example requestArray[0] *
-
+            int[] numbers = Arrays.stream(requests.split(" ")).mapToInt(Integer::parseInt).toArray();  
 
                 //Algorithms *These should be in a class/method*
                 if (userAlgorithm == 0){
                     System.out.println("Algorithm: FCFS");
+                    int diff = 0;
+                    int seek = 0;
+                    for(int j=0; j<19; j++){
+                        diff = Math.abs(numbers[j+1] - numbers[j]);
+                        seek += diff;
+                    }
+                        System.out.println("Total head movement is: " + seek);
                 }
                 else if (userAlgorithm == 1){
-                    System.out.println("Algorithm: SSTF");
-                    System.out.println("Starting position: " + startPos); 
-                    System.out.println("Direction: " + direction);
-                    //System.out.println(requestArray[9]);
+                    System.out.println("Algorithm: SSTF"); 
                 }
                 else if (userAlgorithm == 2){
                     System.out.println("Algorithm: LOOK"); 
@@ -49,7 +52,7 @@ public class diskScheduling {
         }
         catch (FileNotFoundException ex)  
         {
-            System.out.println("My code sucks"); // insert code to run when exception occurs
+            System.out.println("Error"); // insert code to run when exception occurs
         }
 
         
