@@ -23,10 +23,11 @@ public class diskScheduling {
             }
 
             //Variables used for algorithms
-            Integer startPos = Integer.parseInt(list.get(0)); //Variable for starting position
+            Integer head = Integer.parseInt(list.get(0)); //Variable for starting position
             Integer direction = Integer.parseInt(list.get(1)); //Variable for direction
             String requests = list.get(2); 
             int[] numbers = Arrays.stream(requests.split(" ")).mapToInt(Integer::parseInt).toArray();  
+            
 
                 //Algorithms *These should be in a class/method*
                 if (userAlgorithm == 0){
@@ -46,7 +47,26 @@ public class diskScheduling {
                     System.out.println("Algorithm: LOOK"); 
                 }
                 else if (userAlgorithm == 3){
-                    System.out.println("Algorithm: C-LOOK");    
+                    System.out.println("Algorithm: C-LOOK");
+                    int low = 0;
+                    int high = 199;
+                    int[] above = new int[20];
+                    int aboveIndex = 0;
+                    int[] below = new int[20];
+                    int belowIndex = 0;
+                    //loop to sort into Above and Below head
+                    for (int j=0; j<19; j++){
+                        if(numbers[j] >= head){
+                            above[aboveIndex] = numbers[j];
+                            aboveIndex++;
+                        }else{
+                            below[belowIndex] = numbers[j];
+                            belowIndex++;
+                        }
+
+                    }
+                System.out.println("Numbers above head: " + Arrays.toString(above));
+                System.out.println("Numbers below head: " + Arrays.toString(below));
                 }
 
         }
