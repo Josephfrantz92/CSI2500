@@ -9,35 +9,25 @@ public class diskScheduling {
         System.out.println("/////Debug stuff/////");
         System.out.println("User picked: " + userAlgorithm); //User's choice of Algorithm
         
-        //Begin finding file path
+        //Import scheduling file
         File f = new File(args[1]);
-        String absolute = f.getAbsolutePath();
-        System.out.println("File path is: " + absolute); //File path
+
 
         try{
             //Read file and store into an array
-            Scanner input = new Scanner(f);
-            List<String> list = new ArrayList<String>();
+            Scanner sc = new Scanner(f);
+            ArrayList<String> list = new ArrayList<String>();
 
-            while (input.hasNextLine()) {
-                list.add(input.nextLine());
+            while (sc.hasNextLine()) {
+                list.add(sc.nextLine());
             }
 
             //Variables used for algorithms
-            Integer startPos = Integer.parseInt(list.get(0));
-            Integer direction = Integer.parseInt(list.get(1));
-            //Integer requests = Integer.parseInt(list.get(2));
-            //Array requests needs to be transposed from x x x x x to:
-            //x
-            //x
-            //x
-            //x
-            //x
+            Integer startPos = Integer.parseInt(list.get(0)); //Variable for starting position
+            Integer direction = Integer.parseInt(list.get(1)); //Variable for direction
+            String requests = list.get(2); 
+            String[] requestArray = requests.split(" "); //Array for requests *Example requestArray[0] *
 
-            
-            //System.out.println(startPos); 
-            //System.out.println(direction);
-            //System.out.println(requests); //Need to convert to an array
 
                 //Algorithms *These should be in a class/method*
                 if (userAlgorithm == 0){
@@ -45,6 +35,9 @@ public class diskScheduling {
                 }
                 else if (userAlgorithm == 1){
                     System.out.println("Algorithm: SSTF");
+                    System.out.println("Starting position: " + startPos); 
+                    System.out.println("Direction: " + direction);
+                    //System.out.println(requestArray[9]);
                 }
                 else if (userAlgorithm == 2){
                     System.out.println("Algorithm: LOOK"); 
