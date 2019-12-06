@@ -27,6 +27,7 @@ public class diskScheduling {
             Integer direction = Integer.parseInt(list.get(1)); //Variable for direction
             String requests = list.get(2); 
             int[] numbers = Arrays.stream(requests.split(" ")).mapToInt(Integer::parseInt).toArray();  
+            Arrays.sort(numbers);
             
 
                 //Algorithms *These should be in a class/method*
@@ -41,7 +42,8 @@ public class diskScheduling {
                         System.out.println("Total head movement is: " + seek);
                 }
                 else if (userAlgorithm == 1){
-                    System.out.println("Algorithm: SSTF"); 
+                    System.out.println("Algorithm: SSTF");
+                    SSTF.SSTF2(numbers, head);
                 }
                 else if (userAlgorithm == 2){
                     System.out.println("Algorithm: LOOK"); 
@@ -63,7 +65,6 @@ public class diskScheduling {
                             below[belowIndex] = numbers[j];
                             belowIndex++;
                         }
-
                     }
                 System.out.println("Numbers above head: " + Arrays.toString(above));
                 System.out.println("Numbers below head: " + Arrays.toString(below));
